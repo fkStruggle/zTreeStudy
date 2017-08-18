@@ -55,8 +55,6 @@
 		   isMove:true,
 		   //isCopy:true
 	   }
-	   
-		
   }};
   $(function(){
 	  $.ajax({
