@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.fk.ztree.common.pojo.ZtDept" >
     <id column="deptId" property="deptid" jdbcType="BIGINT" />
     <result column="deptName" property="deptname" jdbcType="VARCHAR" />
-    <result column="deptParentId" property="deptparentid" jdbcType="VARCHAR" />
+    <result column="deptParentId" property="deptparentid" jdbcType="BIGINT" />
     <result column="creteTime" property="cretetime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
