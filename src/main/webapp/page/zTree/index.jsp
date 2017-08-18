@@ -36,9 +36,12 @@
 		//回调函数执行，与edit属性有顺序关系
 		callback: {
 			//拖拽
-			onDrag: zTreeOnDrag,
+			//onDrag: zTreeOnDrag,
 			//拖拽过程中
-			onDragMove: zTreeOnDragMove
+			//onDragMove: zTreeOnDragMove,
+			beforeDrag: zTreeBeforeDrag,
+			onDrop: zTreeOnDrop
+			
 		},
 		view: {
 	    //鼠标放到接点上，显示默认自定义控件，类似显示一个新增的按钮
@@ -121,6 +124,29 @@
 		debugger;
 	    console.log(event.target);
 	};
+	
+	//拖拽的节点
+	//v3.x 允许多个同级节点同时被拖拽，因此将此参数修改为 Array(JSON)
+    //如果拖拽时多个被选择的节点不是同级关系，则只能拖拽鼠标当前所在位置的节点
+    //拖拽的数组id
+    var dragIds =[]
+	function zTreeBeforeDrag(treeId, treeNodes){
+		debugger;
+		for(var i = 0,l=treeNodes.length;i<l;i++){
+			var tempId = treeNodes[i];
+			dragIds.push(tempId.deptid);
+			//禁止拖拽
+			/* if(tempId.drag == false){
+				return false;
+			} */
+		} 
+		return true;
+	}
+	//拖拽后
+    function zTreeOnDrop(event, treeId, treeNodes, targetNode, moveType) {
+		debugger;
+        console.log(treeNodes.length + "," + (targetNode ? (targetNode.tId + ", " + targetNode.name) : "isRoot" ));
+    };
   </SCRIPT>
  </HEAD>
 <BODY>
