@@ -30,6 +30,7 @@
 					enable: true,
 					idKey: "deptid",
 					pIdKey: "deptparentid",
+					icon:"icon",
 					rootPId: 0
 				}
 			}, 

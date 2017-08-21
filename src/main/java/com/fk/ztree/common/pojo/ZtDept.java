@@ -11,8 +11,18 @@ public class ZtDept {
 
     private Date cretetime;
     //TODO修改机构
+    
+    private String icon;
 
-    public Long getDeptid() {
+    public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	public Long getDeptid() {
         return deptid;
     }
 

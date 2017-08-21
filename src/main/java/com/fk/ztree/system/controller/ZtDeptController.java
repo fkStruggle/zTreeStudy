@@ -30,10 +30,13 @@ public class ZtDeptController
   @ResponseBody
   public ResponseMsg getDepts()
   {
-    List depts = null;
+    List<ZtDept> depts = null;
     ResponseMsg res = new ResponseMsg(true, Constant.successCode, "初始化树成功", null);
     try {
-      depts = this.deptService.getDepts();
+      depts = deptService.getDepts();
+      for(ZtDept zt :depts){
+    	  zt.setIcon("../../../zTreeStudy/css/zTree/zTreeStyle/img/diy/1_open.png");
+      }
       //json = JSONArray.
       res.setData(depts);
     } catch (ServiceException e) {
