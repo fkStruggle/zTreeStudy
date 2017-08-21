@@ -29,4 +29,7 @@ public interface ZtDeptMapper {
     int updateByPrimaryKey(ZtDept record);
     
     List<ZtDept> selectDepts();
+    
+    //拖拽更新
+    void updateByDrag(@Param("deptIds")String [] deptIds,@Param("deptparentid") String deptparentid);
 }

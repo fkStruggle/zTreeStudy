@@ -197,4 +197,12 @@
        select * from zt_dept;
   </select>
   
+  <!-- 拖拽更新 -->
+  <update id="updateByDrag">
+    update zt_dept set deptparentid =#{deptparentid} where deptId in
+      <foreach collection="deptIds" item="deptId" index="index"  
+            open="(" close=")" separator=",">  
+            #{deptId}  
+        </foreach>  
+   </update>
 </mapper>

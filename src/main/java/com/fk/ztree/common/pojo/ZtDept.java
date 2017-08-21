@@ -10,6 +10,7 @@ public class ZtDept {
     private Long deptparentid;
 
     private Date cretetime;
+    //TODO修改机构
 
     public Long getDeptid() {
         return deptid;
