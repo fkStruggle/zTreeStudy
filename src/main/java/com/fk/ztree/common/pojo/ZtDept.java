@@ -13,6 +13,17 @@ public class ZtDept {
     //TODO修改机构
     
     private String icon;
+    
+    private boolean open;
+
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
 
     public String getIcon() {
 		return icon;

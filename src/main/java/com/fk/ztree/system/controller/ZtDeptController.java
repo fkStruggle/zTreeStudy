@@ -35,7 +35,8 @@ public class ZtDeptController
     try {
       depts = deptService.getDepts();
       for(ZtDept zt :depts){
-    	  zt.setIcon("../../../zTreeStudy/css/zTree/zTreeStyle/img/diy/1_open.png");
+    	  //zt.setIcon("../../../zTreeStudy/css/zTree/zTreeStyle/img/diy/1_open.png");
+    	  zt.setOpen(true);
       }
       //json = JSONArray.
       res.setData(depts);

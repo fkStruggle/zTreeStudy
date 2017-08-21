@@ -31,6 +31,7 @@
 					idKey: "deptid",
 					pIdKey: "deptparentid",
 					icon:"icon",
+					open:"open",
 					rootPId: 0
 				}
 			}, 
@@ -41,7 +42,9 @@
 			//拖拽过程中
 			//onDragMove: zTreeOnDragMove,
 			//beforeDrag: zTreeBeforeDrag,
-			onDrop: zTreeOnDrop
+			onDrop: zTreeOnDrop,
+			beforeRemove: zTreeBeforeRemove,
+			beforeEditName: beforeEditName,
 			
 		},
 		view: {
@@ -52,8 +55,12 @@
       edit:{
 	   enable: true,
 	   //不显示自带按钮
-	   showRemoveBtn : false,
-	   showRenameBtn : false,
+	   //showRemoveBtn : false,
+	   //showRenameBtn : false,
+	   showRemoveBtn: showRemoveBtn,
+	   showRenameBtn: showRenameBtn,
+	   removeTitle: "删除组织机构",
+	   renameTitle: "修改组织机构",
 	   drag:{
 		   //拖拽
 		   isMove:true,
@@ -91,7 +98,44 @@
 		if (btn) btn.bind("click", function(){alert("diy Button for " + treeNode.name);});
 	}; */
 	
-	 function addHoverDom(treeId, treeNode) {
+	//在树节点后增加添加按钮
+	function addHoverDom(treeId, treeNode) {
+		var sObj = $("#" + treeNode.tId + "_span");
+		if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
+		if (treeNode.level <= 2) {
+			var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+				+ "' title='添加组织机构' onfocus='this.blur();'  onclick='removeDataDept()'></span>";
+			sObj.after(addStr);
+			var btn = $("#addBtn_"+treeNode.tId);
+			if (btn) btn.bind("click", function(){
+				/* thisformnodeId=treeNode.tId;
+				
+				var parentName = getParentDeptName(treeNode);
+				if (parentName == "") {
+					$("#parentDept").html(treeNode.name);
+				} else {
+					$("#parentDept").html(parentName + "/" + treeNode.name);
+				}
+				$("#parentDeptId").val(treeNode.id);
+				$("#newDepartment").modal("show"); */
+				alert('添加成功')
+				return false;
+			});
+		}
+	};
+	//
+	function removeDataDept(){
+		/* $("#addMememberUserList").html("")
+		$("#addOrgNo").val("");
+		$("#addOrgName").val("")
+		debugger;
+		$("#parentDeptId").next().find("textarea").val(""); */
+	}
+	function removeHoverDom(treeId, treeNode) {
+		$("#addBtn_"+treeNode.tId).unbind().remove();
+	};
+	
+	 /* function addHoverDom(treeId, treeNode) {
 		//debugger;
 		var aObj = $("#" + treeNode.tId + "_a");
 		if ($("#diyBtnAd_"+treeNode.deptid).length>0) return;
@@ -124,7 +168,7 @@
 		//删除按钮
 		$("#diyBtnDe_"+treeNode.deptid).unbind().remove();
 		$("#diyBtn_space_" +treeNode.deptid).unbind().remove();
-	}; 
+	};  */
 	/* function addHoverDom(treeId, treeNode) {
 		debugger;
 		var aObj = $("#" + treeNode.tId + "_a");
@@ -209,12 +253,85 @@
    	        	dataType:"json",
    	        	async:true,
    	        	success:function(data){
-   	        		//debugger;
+   	        		debugger;
    	        		zNodes = data.data;
    	        		zTreeObj = $.fn.zTree.init($("#treeDemo"), setting,zNodes);
+   	        		//var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+   	        		//var nodes = treeObj.getNodes();
+   	        		//var nodes = zTreeObj.getNodes();
+   	        		var nodes =zTreeObj.transformToArray(zTreeObj.getNodes());
+   	        		for(var i = 0;i<nodes.length;i++){
+   	        			/* if(nodes[i].level==0){
+   	        				nodes[i].icon= "icon01";
+   		        			//调用updateNode(node)接口进行更新
+   		        			zTree.updateNode(nodes[i]);
+   	        			} */
+   	        			if(nodes[i].level==0){
+   	        				nodes[i].icon= "<%=path%>/css/zTree/zTreeStyle/img/diy/1_open.png";
+   		        			//nodes[i].open=false;
+   	        				//调用updateNode(node)接口进行更新
+   		        			zTreeObj.updateNode(nodes[i]);
+   		        			continue;
+   	        			}
+   	        			if(nodes[i].level==1){
+   	        				nodes[i].icon= "<%=path%>/css/zTree/zTreeStyle/img/diy/1_close.png";
+   	        				//nodes[i].open=false;
+   	        				//调用updateNode(node)接口进行更新
+   		        			zTreeObj.updateNode(nodes[i]);
+   		        			continue;
+   	        			}
+   	        			
+   	        			if(nodes[i].level==2){
+   	        				nodes[i].icon= "<%=path%>/css/zTree/zTreeStyle/img/diy/1_close.png";
+   	        				//nodes[i].open=false;
+   	        				//调用updateNode(node)接口进行更新
+   		        			zTreeObj.updateNode(nodes[i]);
+   		        			continue;
+   	        			}
+   	        			if(nodes[i].level==3){
+   	        				nodes[i].icon= "<%=path%>/css/zTree/zTreeStyle/img/diy/1_close.png";
+   	        				//nodes[i].open=false;
+   	        				//调用updateNode(node)接口进行更新
+   		        			zTreeObj.updateNode(nodes[i]);
+   		        			continue;
+   	        			}
+	        			
+        			}
    	        	}
    	  });
     }
+    
+  //是否显示删除按钮
+	function showRemoveBtn(treeId, treeNode){
+		if(treeNode.showRemoveBtn == false){
+			return false;
+		}
+		return true;
+	}
+	//是否显示编辑按钮
+	function showRenameBtn(treeId, treeNode){
+		if(treeNode.showRenameBtn == false){
+			return false;
+		}
+		return true;
+	}
+	//删除前执行
+	function zTreeBeforeRemove(treeId, treeNode){
+		//禁止删除
+		//TODO 
+		//增加删除弹出框
+		alert('删除成功'+treeNode.deptparentid);
+		return false;
+	}
+	//禁止编辑
+	function beforeEditName(treeId, treeNode){
+		var level = treeNode.level;
+		debugger;
+		//TODO 
+		//增加编辑弹出框
+		alert('编辑成功'+treeNode.deptparentid);
+		return false;
+	}
   </SCRIPT>
  </HEAD>
 <BODY>
