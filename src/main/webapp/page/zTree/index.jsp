@@ -102,7 +102,7 @@
 	function addHoverDom(treeId, treeNode) {
 		var sObj = $("#" + treeNode.tId + "_span");
 		if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
-		if (treeNode.level <= 2) {
+		//if (treeNode.level <= 2) {
 			var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
 				+ "' title='添加组织机构' onfocus='this.blur();'  onclick='removeDataDept()'></span>";
 			sObj.after(addStr);
@@ -121,7 +121,7 @@
 				alert('添加成功')
 				return false;
 			});
-		}
+		//}
 	};
 	//
 	function removeDataDept(){
@@ -213,7 +213,7 @@
 	} */
 	//拖拽后
     function zTreeOnDrop(event, treeId, treeNodes, targetNode, moveType) {
-		debugger;
+		//debugger;
 		if(treeNodes[0].deptparentid==targetNode.deptparentid){
 			return true;
 		}
@@ -253,7 +253,7 @@
    	        	dataType:"json",
    	        	async:true,
    	        	success:function(data){
-   	        		debugger;
+   	        		//debugger;
    	        		zNodes = data.data;
    	        		zTreeObj = $.fn.zTree.init($("#treeDemo"), setting,zNodes);
    	        		//var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
@@ -282,14 +282,14 @@
    	        			}
    	        			
    	        			if(nodes[i].level==2){
-   	        				nodes[i].icon= "<%=path%>/css/zTree/zTreeStyle/img/diy/1_close.png";
+   	        				nodes[i].icon= "<%=path%>/css/zTree/zTreeStyle/img/diy/3.png";
    	        				//nodes[i].open=false;
    	        				//调用updateNode(node)接口进行更新
    		        			zTreeObj.updateNode(nodes[i]);
    		        			continue;
    	        			}
    	        			if(nodes[i].level==3){
-   	        				nodes[i].icon= "<%=path%>/css/zTree/zTreeStyle/img/diy/1_close.png";
+   	        				nodes[i].icon= "<%=path%>/css/zTree/zTreeStyle/img/diy/5.png";
    	        				//nodes[i].open=false;
    	        				//调用updateNode(node)接口进行更新
    		        			zTreeObj.updateNode(nodes[i]);
@@ -303,6 +303,7 @@
     
   //是否显示删除按钮
 	function showRemoveBtn(treeId, treeNode){
+	  //debugger;
 		if(treeNode.showRemoveBtn == false){
 			return false;
 		}
@@ -326,7 +327,7 @@
 	//禁止编辑
 	function beforeEditName(treeId, treeNode){
 		var level = treeNode.level;
-		debugger;
+		//debugger;
 		//TODO 
 		//增加编辑弹出框
 		alert('编辑成功'+treeNode.deptparentid);
