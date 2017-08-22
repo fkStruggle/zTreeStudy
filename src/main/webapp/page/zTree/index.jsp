@@ -83,21 +83,6 @@
 	                ];
 	   
   });
-   
-   
-   
-/*    function addDiyDom(treeId, treeNode) {
-	   
-		var aObj = $("#" + treeNode.tId + "_a");
-		if ($("#diyBtn_"+treeNode.id).length>0) return;
-		var editStr = "<span id='diyBtn_space_" +treeNode.id+ "' > </span>"
-			+ "<button type='button' class='diyBtn1' id='diyBtn_" + treeNode.id
-			+ "' title='"+treeNode.name+"' onfocus='this.blur();'></button>";
-		aObj.append(editStr);
-		var btn = $("#diyBtn_"+treeNode.id);
-		if (btn) btn.bind("click", function(){alert("diy Button for " + treeNode.name);});
-	}; */
-	
 	//在树节点后增加添加按钮
 	function addHoverDom(treeId, treeNode) {
 		var sObj = $("#" + treeNode.tId + "_span");
@@ -108,16 +93,6 @@
 			sObj.after(addStr);
 			var btn = $("#addBtn_"+treeNode.tId);
 			if (btn) btn.bind("click", function(){
-				/* thisformnodeId=treeNode.tId;
-				
-				var parentName = getParentDeptName(treeNode);
-				if (parentName == "") {
-					$("#parentDept").html(treeNode.name);
-				} else {
-					$("#parentDept").html(parentName + "/" + treeNode.name);
-				}
-				$("#parentDeptId").val(treeNode.id);
-				$("#newDepartment").modal("show"); */
 				alert('添加成功')
 				return false;
 			});
@@ -125,118 +100,32 @@
 	};
 	//
 	function removeDataDept(){
-		/* $("#addMememberUserList").html("")
-		$("#addOrgNo").val("");
-		$("#addOrgName").val("")
-		debugger;
-		$("#parentDeptId").next().find("textarea").val(""); */
 	}
 	function removeHoverDom(treeId, treeNode) {
 		$("#addBtn_"+treeNode.tId).unbind().remove();
 	};
 	
-	 /* function addHoverDom(treeId, treeNode) {
-		//debugger;
-		var aObj = $("#" + treeNode.tId + "_a");
-		if ($("#diyBtnAd_"+treeNode.deptid).length>0) return;
-		var editStr = "<span id='diyBtn_space_" +treeNode.deptid+ "' > </span>"
-			+ "<button type='button' value='新增' class='diyBtn1' id='diyBtnAd_" + treeNode.deptid
-			+ "' title='新增' onfocus='this.blur();'></button>" 
-			+ " <button type='button' value='修改' class='diyBtn2' id='diyBtnEd_" + treeNode.deptid
-			+ "' title='修改' onfocus='this.blur();'></button>"
-			+ " <button type='button' value='删除' class='diyBtn3' id='diyBtnDe_" + treeNode.deptid
-			+ "' title='删除' onfocus='this.blur();'></button>";
-		aObj.append(editStr);
-		var btnAd = $("#diyBtnAd_"+treeNode.deptid);
-		var btnEd = $("#diyBtnEd_"+treeNode.deptid);
-		var btnDe = $("#diyBtnDe_"+treeNode.deptid);
-		if (btnAd) btnAd.bind("click", function(){
-			debugger;
-			alert("diy Button for 新增 " + treeNode.deptname);});
-		if (btnEd) btnEd.bind("click", function(){
-			debugger;
-			alert("diy Button for 修改" + treeNode.deptname);});
-		if (btnDe) btnDe.bind("click", function(){
-			debugger;
-			alert("diy Button for 删除" + treeNode.deptname);});
-	};
-	function removeHoverDom(treeId, treeNode) {
-		//新增按钮
-		$("#diyBtnAd_"+treeNode.deptid).unbind().remove();
-		//修改按钮
-		$("#diyBtnEd_"+treeNode.deptid).unbind().remove();
-		//删除按钮
-		$("#diyBtnDe_"+treeNode.deptid).unbind().remove();
-		$("#diyBtn_space_" +treeNode.deptid).unbind().remove();
-	};  */
-	/* function addHoverDom(treeId, treeNode) {
-		debugger;
-		var aObj = $("#" + treeNode.tId + "_a");
-		if ($("#diyBtn_"+treeNode.id).length>0) return;
-		var editStr = "<span id='diyBtn_space_" +treeNode.id+ "' > </span>"
-			+ "<button type='button' class='diyBtn1' id='diyBtn_" + treeNode.id
-			+ "' title='"+treeNode.name+"' onfocus='this.blur();'></button>";
-		aObj.append(editStr);
-		var btn = $("#diyBtn_"+treeNode.id);
-		if (btn) btn.bind("click", function(){alert("diy Button for " + treeNode.name);});
-	};
-	function removeHoverDom(treeId, treeNode) {
-		$("#diyBtn_"+treeNode.id).unbind().remove();
-		$("#diyBtn_space_" +treeNode.id).unbind().remove();
-	}; */
-	/* function zTreeOnDrag(event, treeId, treeNodes) {
-		debugger;
-	    alert(treeNodes.length);
-	};
-	
-	function zTreeOnDragMove(event, treeId, treeNodes) {
-		debugger;
-	    console.log(event.target);
-	}; */
-	
-	//拖拽的节点
-	//v3.x 允许多个同级节点同时被拖拽，因此将此参数修改为 Array(JSON)
-    //如果拖拽时多个被选择的节点不是同级关系，则只能拖拽鼠标当前所在位置的节点
-    //拖拽的数组id
-  /*   var dragIds =[]
-	function zTreeBeforeDrag(treeId, treeNodes){
-		debugger;
-		for(var i = 0,l=treeNodes.length;i<l;i++){
-			var tempId = treeNodes[i];
-			dragIds.push(tempId.deptid);
-			//禁止拖拽
-			 if(tempId.drag == false){
-				return false;
-			} 
-		} 
-		return true;
-	} */
 	//拖拽后
     function zTreeOnDrop(event, treeId, treeNodes, targetNode, moveType) {
-		//debugger;
+		debugger;
 		if(treeNodes[0].deptparentid==targetNode.deptparentid){
 			return true;
 		}
         console.log(treeNodes.length + "," + (targetNode ? (targetNode.tId + ", " + targetNode.name) : "isRoot" ));
         
-       // var dragIds =[];
         var   dragIds= new Array();
         for(var i = 0,l=treeNodes.length;i<l;i++){
 			var tempId = treeNodes[i];
 			dragIds.push(tempId.deptid);
 		} 
-       // var deptIds = JSON.stringify(dragIds); 
         var data ={};
-       // var data ={"newParaentId":targetNode.deptid,"deptIds":deptIds};
         data.newParaentId = targetNode.deptid;
         data.deptIds = dragIds;
         $.ajax({
         	type:"post",
         	data:data,
         	url:"<%=path%>/dept/upDePaIdByDrag",
-        	//dataType:"json",
-        	//contentType:"application/json", 
-        	sucess:function(data){
+        	success:function(data){
         		 if(data.isSuccess ==true){
         			 updateTree();
         		 }
@@ -253,19 +142,10 @@
    	        	dataType:"json",
    	        	async:true,
    	        	success:function(data){
-   	        		//debugger;
    	        		zNodes = data.data;
    	        		zTreeObj = $.fn.zTree.init($("#treeDemo"), setting,zNodes);
-   	        		//var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
-   	        		//var nodes = treeObj.getNodes();
-   	        		//var nodes = zTreeObj.getNodes();
    	        		var nodes =zTreeObj.transformToArray(zTreeObj.getNodes());
    	        		for(var i = 0;i<nodes.length;i++){
-   	        			/* if(nodes[i].level==0){
-   	        				nodes[i].icon= "icon01";
-   		        			//调用updateNode(node)接口进行更新
-   		        			zTree.updateNode(nodes[i]);
-   	        			} */
    	        			if(nodes[i].level==0){
    	        				nodes[i].icon= "<%=path%>/css/zTree/zTreeStyle/img/diy/1_open.png";
    		        			//nodes[i].open=false;
@@ -303,7 +183,6 @@
     
   //是否显示删除按钮
 	function showRemoveBtn(treeId, treeNode){
-	  //debugger;
 		if(treeNode.showRemoveBtn == false){
 			return false;
 		}
@@ -327,7 +206,6 @@
 	//禁止编辑
 	function beforeEditName(treeId, treeNode){
 		var level = treeNode.level;
-		//debugger;
 		//TODO 
 		//增加编辑弹出框
 		alert('编辑成功'+treeNode.deptparentid);
