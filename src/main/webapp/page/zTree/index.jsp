@@ -9,11 +9,47 @@
  <HEAD>
   <TITLE> ZTREE DEMO </TITLE>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
- <!--  <link rel="stylesheet" href="demoStyle/demo.css" type="text/css"> -->
   <link rel="stylesheet" href="<%=path %>/css/zTree/zTreeStyle/zTreeStyle.css" type="text/css">
-  <script type="text/javascript"
-									src="<%=path%>/js/importJs/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="<%=path%>/bootstrap/css/bootstrap.min.css">
+ </HEAD>
+<BODY>
+<div>
+   <ul id="treeDemo" class="ztree"></ul>
+</div>
+
+<!-- 新增弹出狂 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					新增机构
+				</h4>
+			</div>
+			<div class="modal-body">
+				机构名称:<input id="orgName" type="text" name ="deptname"/>
+				      <input id="deptparentid" type="hidden" name ="deptparentid"/>
+			</div>
+			<div class="modal-footer">
+				<span class="btn btn-default" data-dismiss="modal">
+					关闭
+				</span>
+				<span class="btn btn-primary" onclick="addDept();">
+					确定
+				</span>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+	
+	
+</div>
+
+<script type="text/javascript" src="<%=path%>/js/importJs/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="<%=path%>/js/importJs/zTree/jquery.ztree.all.min.js"></script>
+  <script type="text/javascript" src="<%=path%>/bootstrap/js/bootstrap.min.js"></script>
   <SCRIPT type="text/javascript" >
   var zNodes;
 //zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
@@ -85,6 +121,9 @@
   });
 	//在树节点后增加添加按钮
 	function addHoverDom(treeId, treeNode) {
+		//新增时先清空deptparentid与orgname
+		$("#deptparentid").val('');
+		$("#orgName").val('');
 		var sObj = $("#" + treeNode.tId + "_span");
 		if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
 		//if (treeNode.level <= 2) {
@@ -93,7 +132,8 @@
 			sObj.after(addStr);
 			var btn = $("#addBtn_"+treeNode.tId);
 			if (btn) btn.bind("click", function(){
-				alert('添加成功')
+				$('#myModal').modal("show");
+				$("#deptparentid").val(treeNode.deptid);
 				return false;
 			});
 		//}
@@ -211,11 +251,27 @@
 		alert('编辑成功'+treeNode.deptparentid);
 		return false;
 	}
+	
+	//新增部门
+	function addDept(){
+		var orgName = $("#orgName").val();
+		var deptparentid = $("#deptparentid").val();
+		var data={};
+		data.deptname = orgName;
+		data.deptparentid = deptparentid;
+		$.ajax({
+			 url :"<%=path%>/dept/insDept",
+			 type:"post",
+			 data:JSON.stringify(data),
+			 contentType:"application/json;charset=utf-8",
+			 success:function(data){
+				 if(data.isSuccess ==true){
+					 updateTree();
+					 $("#myModal").modal("hide");
+				 }
+			 }
+		});
+	}
   </SCRIPT>
- </HEAD>
-<BODY>
-<div>
-   <ul id="treeDemo" class="ztree"></ul>
-</div>
 </BODY>
 </HTML>
