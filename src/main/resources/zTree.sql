@@ -30,4 +30,12 @@ CREATE TABLE `zt_dept` (
 -- ----------------------------
 -- Records of wg_anonymous_dynamic
 -- ----------------------------
+INSERT INTO `zt_dept` VALUES ('1', '航天大队', '0', '2017-08-16 17:42:41');
+INSERT INTO `zt_dept` VALUES ('2', '信息所', '6', '2017-08-17 17:43:04');
+INSERT INTO `zt_dept` VALUES ('3', '保卫处', '1', '2017-08-16 17:43:23');
+INSERT INTO `zt_dept` VALUES ('4', '人事处', '1', '2017-08-22 17:43:37');
+INSERT INTO `zt_dept` VALUES ('5', '人事处二组', '4', '2017-08-24 17:43:54');
+INSERT INTO `zt_dept` VALUES ('6', '人事处一组', '4', '2017-08-18 13:28:50');
+INSERT INTO `zt_dept` VALUES ('7', '一组西侧', '6', '2017-08-18 13:29:14');
+INSERT INTO `zt_dept` VALUES ('8', '一组东侧', '5', '2017-08-18 13:29:38');
 
