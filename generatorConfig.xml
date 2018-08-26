@@ -2,7 +2,7 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration >
 <!-- <classPathEntry location="D:\tomcat7.0bymyself\apache-tomcat-7.0.42\webapps\zTreeStudy\WEB-INF\lib\mysql-connector-java-5.1.30.jar" /> -->
-<classPathEntry location="E:\apache-tomcat-6.0.9\apache-tomcat-6.0.9\webapps\zTreeStudy\WEB-INF\lib\mysql-connector-java-5.1.30.jar" />
+<classPathEntry location="D:\tomcat7.0bymyself\apache-tomcat-7.0.42\webapps\zTreeStudy\WEB-INF\lib\mysql-connector-java-5.1.30.jar" />
   <context id="context1" >
     <commentGenerator>    
            <property name="suppressDate" value="true"/>    
@@ -17,6 +17,7 @@
      <!--  <columnOverride column="???" property="???" /> -->
     <!-- </table> -->
     <!-- <table schema="User" tableName="wg_user" ></table> -->
-    <table schema="ztdept" tableName="zt_dept" ></table>
+    <table schema="User" tableName="user" ></table>
+    <table schema="UserDetail" tableName="user_detail" ></table>
   </context>
 </generatorConfiguration>
