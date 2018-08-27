@@ -2,7 +2,6 @@ package com.fk.ztree.system.service;
 
 import java.util.Map;
 
-import com.fk.ztree.common.pojo.User;
 import com.fk.ztree.common.util.exception.ServiceException;
 
 /**
@@ -22,6 +21,17 @@ public interface UserService {
     * @param @param 用户id，手机号，微信识别码
     * @return User    返回用户
      */
-    public User findUserByInfo(Map params) throws ServiceException;
+    public String findUserByInfo(Map<String, String> params) throws ServiceException;
+    
+    /**
+     * 
+    * @Title: saveUser  
+    * @Description: 保存用户与详情信息
+    * @param @param json格式字符串
+    * @return void
+     */
+    public void saveUser(String userStr)throws ServiceException;
+    
+    
 
 }

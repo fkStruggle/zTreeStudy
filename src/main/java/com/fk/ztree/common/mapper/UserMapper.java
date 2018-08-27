@@ -38,5 +38,5 @@ public interface UserMapper {
     * @param @param 用户id，手机号，微信识别码
     * @return User    返回用户
      */
-    User findUserByInfo(Map params);
+    User findUserByInfo(Map<String,String> params);
 }

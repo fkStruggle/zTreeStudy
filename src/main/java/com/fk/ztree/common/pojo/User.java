@@ -1,7 +1,14 @@
 package com.fk.ztree.common.pojo;
 
-public class User {
-    private String fid;
+import java.io.Serializable;
+
+public class User implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private String fid;
 
     private String name;
 
