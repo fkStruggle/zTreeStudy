@@ -1,9 +1,9 @@
 CREATE TABLE `user` (
 	`fid` VARCHAR (32) NOT NULL COMMENT '用户ID',
-	`name` VARCHAR (18) NOT NULL COMMENT '用户名称',
+	`name` VARCHAR (18) DEFAULT NULL COMMENT '用户名称',
 	`nick_name` VARCHAR (8) DEFAULT NULL COMMENT '昵称',
 	`head_portrait` VARCHAR (200) DEFAULT NULL COMMENT '头像',
-	`mobile` VARCHAR (11) NOT NULL COMMENT '电话',
+	`mobile` VARCHAR (11) DEFAULT NULL COMMENT '电话',
 	`login_id` VARCHAR (8) DEFAULT NULL COMMENT '登录id',
 	`id_card` VARCHAR (18) DEFAULT NULL COMMENT '身份证号',
 	`password` VARCHAR (60) DEFAULT NULL COMMENT '登录密码',

@@ -33,5 +33,8 @@ public interface UserService {
     public void saveUser(String userStr)throws ServiceException;
     
     
+    public String loginWeixin(String code);
+    
+    
 
 }
