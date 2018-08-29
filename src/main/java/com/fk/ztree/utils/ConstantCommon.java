@@ -12,9 +12,12 @@ public class ConstantCommon {
 	private static PropertiesLoader properties = new PropertiesLoader("conf/weixin.properties");
 	
 	//微信appId
-	public static final String appId = properties.getProperty("appID");
+	public static final String APPID = properties.getProperty("appID");
 	
 	//微信secret
-   public static final String secret = properties.getProperty("secret");
+   public static final String SECRET = properties.getProperty("secret");
+   
+   //微信登录地址
+   public static final String SESSIONHOST = properties.getProperty("sessionHost");
 
 }

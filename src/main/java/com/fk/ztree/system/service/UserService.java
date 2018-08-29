@@ -30,7 +30,7 @@ public interface UserService {
     * @param @param json格式字符串
     * @return void
      */
-    public void saveUser(String userStr)throws ServiceException;
+    public String saveUser(String userStr)throws ServiceException;
     
     /**
      * 

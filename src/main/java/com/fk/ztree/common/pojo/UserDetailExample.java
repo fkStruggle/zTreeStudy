@@ -282,52 +282,52 @@ public class UserDetailExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeEqualTo(Boolean value) {
+        public Criteria andIdTypeEqualTo(Byte value) {
             addCriterion("id_type =", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeNotEqualTo(Boolean value) {
+        public Criteria andIdTypeNotEqualTo(Byte value) {
             addCriterion("id_type <>", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeGreaterThan(Boolean value) {
+        public Criteria andIdTypeGreaterThan(Byte value) {
             addCriterion("id_type >", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andIdTypeGreaterThanOrEqualTo(Byte value) {
             addCriterion("id_type >=", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeLessThan(Boolean value) {
+        public Criteria andIdTypeLessThan(Byte value) {
             addCriterion("id_type <", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeLessThanOrEqualTo(Boolean value) {
+        public Criteria andIdTypeLessThanOrEqualTo(Byte value) {
             addCriterion("id_type <=", value, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeIn(List<Boolean> values) {
+        public Criteria andIdTypeIn(List<Byte> values) {
             addCriterion("id_type in", values, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeNotIn(List<Boolean> values) {
+        public Criteria andIdTypeNotIn(List<Byte> values) {
             addCriterion("id_type not in", values, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeBetween(Boolean value1, Boolean value2) {
+        public Criteria andIdTypeBetween(Byte value1, Byte value2) {
             addCriterion("id_type between", value1, value2, "idType");
             return (Criteria) this;
         }
 
-        public Criteria andIdTypeNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andIdTypeNotBetween(Byte value1, Byte value2) {
             addCriterion("id_type not between", value1, value2, "idType");
             return (Criteria) this;
         }

@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
@@ -17,7 +19,7 @@ public class RedisOperator {
 //	@Autowired
 //    private RedisTemplate<String, Object> redisTemplate;
 	
-	@Autowired
+	@Resource
 	private StringRedisTemplate redisTemplate;
 	
 	// Key（键），简单的key-value操作

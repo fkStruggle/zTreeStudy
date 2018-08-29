@@ -2,14 +2,13 @@ package com.fk.ztree.common.mapper;
 
 import com.fk.ztree.common.pojo.User;
 import com.fk.ztree.common.pojo.UserExample;
-
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
-    int countByExample(UserExample example);
+    long countByExample(UserExample example);
 
     int deleteByExample(UserExample example);
 

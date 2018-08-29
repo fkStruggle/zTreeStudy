@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserDetailMapper {
-    int countByExample(UserDetailExample example);
+    long countByExample(UserDetailExample example);
 
     int deleteByExample(UserDetailExample example);
 
@@ -27,4 +27,13 @@ public interface UserDetailMapper {
     int updateByPrimaryKeySelective(UserDetail record);
 
     int updateByPrimaryKey(UserDetail record);
+    
+    /**
+     * 
+    * @Title: updateByMemberId 
+    * @Description: 根据用户id信息更新用户详情 
+    * @param record 用户详情
+    * @return int    数量
+     */
+    int updateByMemberId(UserDetail record);
 }

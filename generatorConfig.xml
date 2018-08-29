@@ -2,14 +2,16 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration >
 <!-- <classPathEntry location="D:\tomcat7.0bymyself\apache-tomcat-7.0.42\webapps\zTreeStudy\WEB-INF\lib\mysql-connector-java-5.1.30.jar" /> -->
-<classPathEntry location="D:\tomcat7.0bymyself\apache-tomcat-7.0.42\webapps\zTreeStudy\WEB-INF\lib\mysql-connector-java-5.1.30.jar" />
+<!-- <classPathEntry location="D:\tomcat7.0bymyself\apache-tomcat-7.0.42\webapps\zTreeStudy\WEB-INF\lib\mysql-connector-java-5.1.30.jar" /> -->
+<classPathEntry location="D:\tomcat\apache-tomcat-8.0.46\webapps\zTreeStudy\WEB-INF\lib\mysql-connector-java-5.1.30.jar" />
   <context id="context1" >
     <commentGenerator>    
            <property name="suppressDate" value="true"/>    
            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->    
            <property name="suppressAllComments" value="true"/>    
     </commentGenerator> 
-    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/ztree" userId="root" password="0000" />
+    <!-- <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/ztree" userId="root" password="0000" /> -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/ztree" userId="root" password="123456" />
     <javaModelGenerator targetPackage="com.fk.ztree.common.pojo" targetProject="zTreeStudy" />
     <sqlMapGenerator targetPackage="com.fk.ztree.common.pojo" targetProject="zTreeStudy" />
     <javaClientGenerator targetPackage="com.fk.ztree.common.mapper" targetProject="zTreeStudy" type="XMLMAPPER" />

@@ -1,14 +1,7 @@
 package com.fk.ztree.common.pojo;
 
-import java.io.Serializable;
-
-public class User implements Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	private String fid;
+public class User {
+    private String fid;
 
     private String name;
 
@@ -20,15 +13,17 @@ public class User implements Serializable {
 
     private String loginId;
 
-    private String idCard;
+  // private String idCard;
 
     private String password;
 
-    private Boolean level;
+    private Byte level;
 
     private String wxOpenid;
 
     private Boolean userState;
+    
+    private UserDetail userDetail;
 
     public String getFid() {
         return fid;
@@ -78,13 +73,13 @@ public class User implements Serializable {
         this.loginId = loginId;
     }
 
-    public String getIdCard() {
+    /*public String getIdCard() {
         return idCard;
     }
 
     public void setIdCard(String idCard) {
         this.idCard = idCard;
-    }
+    }*/
 
     public String getPassword() {
         return password;
@@ -94,11 +89,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Boolean getLevel() {
+    public Byte getLevel() {
         return level;
     }
 
-    public void setLevel(Boolean level) {
+    public void setLevel(Byte level) {
         this.level = level;
     }
 
@@ -117,4 +112,14 @@ public class User implements Serializable {
     public void setUserState(Boolean userState) {
         this.userState = userState;
     }
+
+	public UserDetail getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(UserDetail userDetail) {
+		this.userDetail = userDetail;
+	}
+    
+    
 }

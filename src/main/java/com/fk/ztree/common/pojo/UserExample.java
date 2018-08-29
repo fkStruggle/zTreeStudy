@@ -674,52 +674,52 @@ public class UserExample {
             return (Criteria) this;
         }
 
-        public Criteria andLevelEqualTo(Boolean value) {
+        public Criteria andLevelEqualTo(Byte value) {
             addCriterion("level =", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelNotEqualTo(Boolean value) {
+        public Criteria andLevelNotEqualTo(Byte value) {
             addCriterion("level <>", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelGreaterThan(Boolean value) {
+        public Criteria andLevelGreaterThan(Byte value) {
             addCriterion("level >", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andLevelGreaterThanOrEqualTo(Byte value) {
             addCriterion("level >=", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelLessThan(Boolean value) {
+        public Criteria andLevelLessThan(Byte value) {
             addCriterion("level <", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelLessThanOrEqualTo(Boolean value) {
+        public Criteria andLevelLessThanOrEqualTo(Byte value) {
             addCriterion("level <=", value, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelIn(List<Boolean> values) {
+        public Criteria andLevelIn(List<Byte> values) {
             addCriterion("level in", values, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelNotIn(List<Boolean> values) {
+        public Criteria andLevelNotIn(List<Byte> values) {
             addCriterion("level not in", values, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelBetween(Boolean value1, Boolean value2) {
+        public Criteria andLevelBetween(Byte value1, Byte value2) {
             addCriterion("level between", value1, value2, "level");
             return (Criteria) this;
         }
 
-        public Criteria andLevelNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andLevelNotBetween(Byte value1, Byte value2) {
             addCriterion("level not between", value1, value2, "level");
             return (Criteria) this;
         }

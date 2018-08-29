@@ -7,7 +7,7 @@ public class UserDetail {
 
     private String userId;
 
-    private Boolean idType;
+    private Byte idType;
 
     private String idCard;
 
@@ -33,11 +33,11 @@ public class UserDetail {
         this.userId = userId;
     }
 
-    public Boolean getIdType() {
+    public Byte getIdType() {
         return idType;
     }
 
-    public void setIdType(Boolean idType) {
+    public void setIdType(Byte idType) {
         this.idType = idType;
     }
 
