@@ -1,7 +1,10 @@
 package com.fk.ztree.system.service;
 
+import java.util.List;
 import java.util.Map;
 
+import com.fk.ztree.common.pojo.User;
+import com.fk.ztree.common.util.Page;
 import com.fk.ztree.common.util.exception.ServiceException;
 
 /**
@@ -50,6 +53,24 @@ public interface UserService {
     * @return void
      */
     public void updateUser(String userStr)throws ServiceException;
+    
+    /**
+     * 
+    * @Title: findUsersPage  
+    * @Description: 分页查询数据
+    * @param page 分页数据
+    * @return void
+     */
+    public List<User> findUsersPage(Page page) throws ServiceException;
+    
+    /**
+     * 
+    * @Title: findUsersPage  
+    * @Description: 分页查询数据
+    * @param page 分页数据
+    * @return void
+     */
+    public int findUsersCount(Page page) throws ServiceException;
     
     
 

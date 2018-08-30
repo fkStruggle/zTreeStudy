@@ -22,6 +22,8 @@ public class Page {
     private boolean hashPrePage;
     //起始页
     private int beginIndex;
+    //查询条件
+    private Object condition;
     
     public Page(int everyPage, int totalPage, int currentPage, int totalCount, boolean hasNextPage, boolean hashPrePage, int beginIndex) {
         super();
@@ -79,5 +81,11 @@ public class Page {
     public void setBeginIndex(int beginIndex) {
         this.beginIndex = beginIndex;
     }
+	public Object getCondition() {
+		return condition;
+	}
+	public void setCondition(Object condition) {
+		this.condition = condition;
+	}
 
 }

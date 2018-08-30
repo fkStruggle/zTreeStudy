@@ -2,6 +2,7 @@ package com.fk.ztree.system.service.impl;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -20,6 +21,7 @@ import com.fk.ztree.common.mapper.UserDetailMapper;
 import com.fk.ztree.common.mapper.UserMapper;
 import com.fk.ztree.common.pojo.User;
 import com.fk.ztree.common.pojo.UserDetail;
+import com.fk.ztree.common.util.Page;
 import com.fk.ztree.common.util.exception.ServiceException;
 import com.fk.ztree.system.service.UserService;
 import com.fk.ztree.utils.ConstantCommon;
@@ -91,7 +93,6 @@ public class UserServiceImpl implements UserService {
 		JSONObject objret = new JSONObject();
 		if (jsCode == null || "".equals(jsCode)) {
 			logger.error("code不能为空");
-			objret.put("errno", 1);
 			objret.put("errMsg", "请检查code");
 			return objret.toString();
 		} else {
@@ -99,7 +100,6 @@ public class UserServiceImpl implements UserService {
 			String appSecret = ConstantCommon.SECRET;
 			if (appId == null || "".equals(appId) || appSecret == null || "".equals(appSecret)) {
 				logger.error("appId或secret不能为空");
-				objret.put("errno", 1);
 				objret.put("errMsg", "服务器异常");
 				return objret.toString();
 			} else {
@@ -109,7 +109,6 @@ public class UserServiceImpl implements UserService {
 				JSONObject ret = HttpClientUtil.sendGetJson(httpUrl);
 				if (ret == null || "".equals(ret)) {
 					logger.error("网络超时");
-					objret.put("errno", 1);
 					objret.put("errMsg", "服务器异常");
 					return objret.toString();
 				} else {
@@ -117,7 +116,6 @@ public class UserServiceImpl implements UserService {
 					if (obj.containsKey("errcode")) {
 						String errcode = obj.get("errcode").toString();
 						logger.error("微信返回的错误码:" + errcode);
-						objret.put("errno", 1);
 						objret.put("errMsg", "服务器异常");
 						return objret.toString();
 					} else if (obj.containsKey("session_key")) {
@@ -156,7 +154,6 @@ public class UserServiceImpl implements UserService {
 						objret.put("rdSessionKey", rsession);
 						// 更新用
 						objret.put("userId", userId);
-						objret.put("errno", 0);
 					}
 
 				}
@@ -190,6 +187,19 @@ public class UserServiceImpl implements UserService {
 
 	public void setRedisTemplate(RedisOperator redisTemplate) {
 		this.redisTemplate = redisTemplate;
+	}
+
+	@Override
+	public List<User> findUsersPage(Page page) throws ServiceException {
+		page.setEveryPage(10);
+		page.setBeginIndex((page.getCurrentPage() - 1) * page.getEveryPage());
+		page.setTotalCount(this.findUsersCount(page));
+		return userMapper.findUsersPage(page);
+	}
+
+	@Override
+	public int findUsersCount(Page page) throws ServiceException {
+		return userMapper.findUsersCount(page);
 	}
 
 }

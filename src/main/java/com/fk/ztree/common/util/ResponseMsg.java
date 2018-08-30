@@ -5,7 +5,7 @@ package com.fk.ztree.common.util;
 * <p>Description:公共类，后台为前台传送数据 </p>
 * <p>Company: </p> 
 * @author fangkun
-* @date 2017年7月13日
+* @date 2018年8月30日
  */
 public class ResponseMsg {
     //成功标识

@@ -1,9 +1,13 @@
 package com.fk.ztree.common.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.fk.ztree.common.pojo.User;
 import com.fk.ztree.common.pojo.UserDetail;
 import com.fk.ztree.common.pojo.UserDetailExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
+import com.fk.ztree.common.util.Page;
 
 public interface UserDetailMapper {
     long countByExample(UserDetailExample example);
@@ -36,4 +40,5 @@ public interface UserDetailMapper {
     * @return int    数量
      */
     int updateByMemberId(UserDetail record);
+    
 }
