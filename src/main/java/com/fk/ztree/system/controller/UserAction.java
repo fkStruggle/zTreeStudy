@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.fk.ztree.common.pojo.User;
 import com.fk.ztree.common.util.Constant;
@@ -18,6 +20,7 @@ import com.fk.ztree.common.util.Page;
 import com.fk.ztree.common.util.ResponseMsg;
 import com.fk.ztree.common.util.exception.ServiceException;
 import com.fk.ztree.system.service.UserService;
+import com.fk.ztree.utils.MD5Util;
 
 
 @Controller
@@ -62,6 +65,7 @@ public class UserAction {
 		return jsonObj;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/findUserByInfo")
 	@ResponseBody
 	public JSONObject findUserByInfo(String info){
@@ -69,7 +73,12 @@ public class UserAction {
 		JSONObject jsonObj = new JSONObject();
 		Map<String,String> map = new HashMap<String,String>();
 		//TODO json格式字符串转成map
-		map.put("mobile", "13598653215");
+		map = (Map<String, String>) JSON.parse(info);
+		String pass = map.get("password");
+		if(StringUtils.isNotBlank(pass)){
+			//加密后比较
+			map.put("password", MD5Util.md5Password(pass));
+		}
 		try{
 			String user = userService.findUserByInfo(map);
 			jsonObj.put("user", user);
